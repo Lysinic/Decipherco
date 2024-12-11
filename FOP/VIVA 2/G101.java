@@ -1,4 +1,3 @@
-
 package viva2;
 
 import java.util.Scanner;
@@ -26,14 +25,14 @@ public class G101 {
             System.out.print("Enter start time(hh:mm:ss): "); 
             String start = sc.nextLine();                   //do a checking to see if it's inputted in the correct format
             if (!isValidTimeFormat(start)) {
-                System.out.println("Invalid format. Please time enter in format hh:mm:ss. Exiting....");
+                System.out.println("Invalid format. Please enter time in format hh:mm:ss. Exiting....");
                 System.exit(0);
             }
             
             System.out.print("Enter end time(hh:mm:ss): ");
             String end = sc.nextLine();
             if (!isValidTimeFormat(end)) {
-                System.out.println("Invalid format. Please time enter in format hh:mm:ss. Exiting....");
+                System.out.println("Invalid format. Please enter time in format hh:mm:ss. Exiting....");
                 System.exit(0);
             }
 
@@ -48,7 +47,7 @@ public class G101 {
                 System.out.println("Welcome to G101, Kolej Kediaman Kinabalu, Universiti Malaya!");
 
             System.out.print(generateInitials(name));
-
+            
             if (isPrintingWelcomeMessage(name) && !(name.equalsIgnoreCase("Ridwan Faiz bin Mohamad Hassan") || name.equalsIgnoreCase("Suresh a/l Subramaniam") || name.equalsIgnoreCase("Lee Kah Sing") )) {
                 System.out.println("!!!!!!!!!!");
                 if (generateInitials(name).equalsIgnoreCase("RFMH") || generateInitials(name).equalsIgnoreCase("SS") || generateInitials(name).equalsIgnoreCase("LKS")) {
@@ -68,7 +67,7 @@ public class G101 {
 
             int[] diff = calculateInterval(start, end);
             if (diff[0] < 6) {
-                System.out.println("\nSLEEP NOW!!!!!!!!!!");
+                System.out.print("\nSLEEP NOW!!!!!!!!!!");
             }
             System.out.printf("\n%02d:%02d:%02d\n", diff[0], diff[1], diff[2]);
 
@@ -111,13 +110,14 @@ public class G101 {
         fullname = fullname.toUpperCase();
         fullname = fullname.replace("A/L", "").replace("A/P", "").replace("AL", "").replace("AP", "").replace("BIN", "").replace("BINTI", "");
         String regex = "[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/\\?~]";
-        fullname = fullname.replaceAll(regex, "").replaceAll("\\s+", " ").trim();
+        fullname = fullname.replaceAll(regex, " ").replaceAll("\\s+", " ").trim();
         String[] name = fullname.split("\\s+");
 
         String[] rfmh = "Ridwan Faiz Mohamad Hassan".toUpperCase().split("\\s");
         String[] ss = "Suresh Subramaniam".toUpperCase().split("\\s");
         String[] lks = "Lee Kah Sing".toUpperCase().split("\\s");
-
+        
+        
         // Check if all parts of the name belong exclusively to one "dude"
         if (matchesAll(name, rfmh)) {
             isp = true;
